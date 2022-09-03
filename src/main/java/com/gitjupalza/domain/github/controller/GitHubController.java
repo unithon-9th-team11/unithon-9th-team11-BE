@@ -19,4 +19,10 @@ public class GitHubController {
 
         return ResponseEntity.ok().body("commit 수 : "+gitHubUtil.getTotalCommitCnt("210-reverof"));
     }
+
+    @GetMapping("/crawlingtest")
+    public ResponseEntity crawlTest() throws IOException, JSONException {
+
+        return ResponseEntity.ok().body("commit 수 : "+gitHubUtil.getTotalCommitCnt("210-reverof"));
+    }
 }
