@@ -2,12 +2,14 @@ package com.gitjupalza.domain.chemy.controller;
 
 import com.gitjupalza.domain.chemy.data.dto.PersonalGithubDataDto;
 import com.gitjupalza.domain.chemy.data.request.CreateChemyRequest;
+import com.gitjupalza.domain.chemy.data.response.CheckQueryChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.CreateChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.DeleteChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.QueryChemyResponse;
 import com.gitjupalza.domain.chemy.service.ChemyService;
 import com.gitjupalza.domain.chemy.service.PersonalGithubService;
 import com.gitjupalza.global.chemy.data.dto.ChemyDto;
+import com.gitjupalza.global.chemy.repository.ChemyRepository;
 import com.gitjupalza.global.chemy.util.ChemyConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ public class ChemyController {
     private final ChemyService chemyService;
     private final ChemyConverter chemyConverter;
     private final PersonalGithubService personalGithubService;
+    private final ChemyRepository chemyRepository;
 
     //궁합 생성
     @PostMapping
@@ -37,6 +40,12 @@ public class ChemyController {
         final PersonalGithubDataDto second = personalGithubService.queryById(dto.getSecondGithubId());
         final QueryChemyResponse response = chemyConverter.toQueryResponse(dto, first, second);
         return ResponseEntity.ok(response);
+    }
+
+    //궁합 조회
+    @GetMapping("/{idx}/check")
+    public ResponseEntity<CheckQueryChemyResponse> queryCheckChemyByIdx(@PathVariable Long idx) {
+        return ResponseEntity.ok(new CheckQueryChemyResponse(chemyRepository.findById(idx).get().getChemyScore() != -1));
     }
 
     //궁합 삭제

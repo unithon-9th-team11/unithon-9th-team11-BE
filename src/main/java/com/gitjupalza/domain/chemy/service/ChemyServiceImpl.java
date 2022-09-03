@@ -1,5 +1,6 @@
 package com.gitjupalza.domain.chemy.service;
 
+import com.gitjupalza.domain.chemy.data.event.ChemyDataGenerateEvent;
 import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import com.gitjupalza.domain.chemy.data.event.CreateChemyEvent;
@@ -42,6 +43,8 @@ public class ChemyServiceImpl implements ChemyService {
 
         final Chemy entity = atomic.get();
         final Chemy savedEntity = chemyRepository.save(entity);
+        ChemyDataGenerateEvent generateEvent = new ChemyDataGenerateEvent(savedEntity.getIdx(), firstGithubId, secondGithubId);
+        applicationEventPublisher.publishEvent(generateEvent);
 ;
         try {
             Long issuerIdx = loginUserService.getLoginUserIdx();
