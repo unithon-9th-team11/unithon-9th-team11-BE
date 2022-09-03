@@ -6,6 +6,7 @@ import com.gitjupalza.domain.member.repository.UserRepository;
 import com.gitjupalza.domain.member.filter.JwtTokenProvider;
 import com.gitjupalza.domain.member.data.entity.Account;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.AnnotationConfigUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,9 @@ public class UserService {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
         return jwtTokenProvider.createToken(member.getId(), "USER");
+    }
+
+    public boolean checkIsPossible(String id) {
+        return userRepository.existsById(id);
     }
 }

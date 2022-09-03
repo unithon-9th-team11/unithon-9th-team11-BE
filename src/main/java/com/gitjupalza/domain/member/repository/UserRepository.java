@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<Account, Long> {
     Account save(Account account);
     Optional<Account> findById(String id);
+    boolean existsById(String id);
 }

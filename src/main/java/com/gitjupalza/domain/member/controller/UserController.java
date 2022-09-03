@@ -39,6 +39,14 @@ public class UserController {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, "로그인 완료", token), HttpStatus.OK);
     }
 
+    // 로그인
+    @PostMapping("/api/v1/account/id/{id}/exists")
+    public ResponseEntity login(@PathVariable("id") String id) {
+        boolean isPossible = userService.checkIsPossible(id);
+
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, "사용 ", isPossible), HttpStatus.OK);
+    }
+
     // JWT 인증 요청 테스트
     @GetMapping("/test")
     public ResponseEntity test(@RequestAttribute String userId) {
