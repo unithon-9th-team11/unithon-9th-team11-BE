@@ -17,6 +17,6 @@ public class GitHubController {
     @GetMapping("/test")
     public ResponseEntity test() throws IOException, JSONException {
 
-        return ResponseEntity.ok().body("star 수 : "+gitHubUtil.getStarCnt("210-reverof"));
+        return ResponseEntity.ok().body("commit 수 : "+gitHubUtil.getTotalCommitCnt("210-reverof"));
     }
 }
