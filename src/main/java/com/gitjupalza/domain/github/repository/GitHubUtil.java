@@ -134,5 +134,46 @@ public class GitHubUtil {
         return currCommitCnt;
     }
 
+    public Integer getOrgCnt(String githubId) throws IOException, JSONException {
+        String getUrl = "https://api.github.com/users/" + githubId + "/orgs";
+        int orgCnt = 0;
+
+        URL url = new URL(getUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        conn.setRequestProperty("User-Agent", "request");
+        conn.setRequestProperty("Authorization", "Bearer " + token);
+        conn.setDoOutput(true);
+
+        try{
+            StringBuffer sb = new StringBuffer();
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            while(br.ready()) {
+                sb.append(br.readLine());
+            }
+
+            String jsonStr = sb.toString();
+
+            try {
+                JSONArray jsonArray = new JSONArray(jsonStr);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject explrObject = jsonArray.getJSONObject(i);
+                    orgCnt = explrObject.length();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return orgCnt;
+    }
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.gitjupalza.domain.github.controller;
 
+import com.gitjupalza.domain.github.repository.GitHubCrawlUtil;
 import com.gitjupalza.domain.github.repository.GitHubUtil;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
@@ -13,6 +14,7 @@ import java.io.IOException;
 @RequestMapping("/api/v1/github")
 public class GitHubController {
     private final GitHubUtil gitHubUtil;
+    private final GitHubCrawlUtil gitHubCrawlUtil;
 
     @GetMapping("/test")
     public ResponseEntity test() throws IOException, JSONException {
@@ -20,9 +22,9 @@ public class GitHubController {
         return ResponseEntity.ok().body("commit 수 : "+gitHubUtil.getTotalCommitCnt("210-reverof"));
     }
 
-    @GetMapping("/crawlingtest")
-    public ResponseEntity crawlTest() throws IOException, JSONException {
+    @GetMapping("/crawling-test")
+    public ResponseEntity crawlTest() {
 
-        return ResponseEntity.ok().body("commit 수 : "+gitHubUtil.getTotalCommitCnt("210-reverof"));
+        return ResponseEntity.ok().body(gitHubCrawlUtil.getTotalContribution() + "~~");
     }
 }
