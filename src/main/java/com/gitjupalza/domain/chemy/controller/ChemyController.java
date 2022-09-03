@@ -35,7 +35,7 @@ public class ChemyController {
     }
 
     //궁합 삭제
-    @GetMapping("/{idx}")
+    @DeleteMapping("/{idx}")
     public ResponseEntity<DeleteChemyResponse> deleteChemy(@PathVariable Long idx) {
         final Long deletedChemyIdx = chemyService.deleteChemy(idx);
         final DeleteChemyResponse response = new DeleteChemyResponse(deletedChemyIdx);
