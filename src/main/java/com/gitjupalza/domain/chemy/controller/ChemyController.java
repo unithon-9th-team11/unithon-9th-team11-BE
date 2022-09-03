@@ -1,11 +1,13 @@
 package com.gitjupalza.domain.chemy.controller;
 
-import com.gitjupalza.global.chemy.data.dto.ChemyDto;
+import com.gitjupalza.domain.chemy.data.dto.PersonalGithubDataDto;
 import com.gitjupalza.domain.chemy.data.request.CreateChemyRequest;
 import com.gitjupalza.domain.chemy.data.response.CreateChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.DeleteChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.QueryChemyResponse;
 import com.gitjupalza.domain.chemy.service.ChemyService;
+import com.gitjupalza.domain.chemy.service.PersonalGithubService;
+import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import com.gitjupalza.global.chemy.util.ChemyConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class ChemyController {
     private final ChemyService chemyService;
     private final ChemyConverter chemyConverter;
+    private final PersonalGithubService personalGithubService;
 
     //궁합 생성
     @PostMapping
@@ -30,7 +33,9 @@ public class ChemyController {
     @GetMapping("/{idx}")
     public ResponseEntity<QueryChemyResponse> queryChemyByIdx(@PathVariable Long idx) {
         final ChemyDto dto = chemyService.queryByIdx(idx);
-        final QueryChemyResponse response = chemyConverter.toQueryResponse(dto);
+        final PersonalGithubDataDto first = personalGithubService.queryById(dto.getFirstGithubId());
+        final PersonalGithubDataDto second = personalGithubService.queryById(dto.getSecondGithubId());
+        final QueryChemyResponse response = chemyConverter.toQueryResponse(dto, first, second);
         return ResponseEntity.ok(response);
     }
 
