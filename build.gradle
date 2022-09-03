@@ -45,6 +45,10 @@ dependencies {
 	//lombok
 	compileOnly ("org.projectlombok:lombok:1.18.24")
 	annotationProcessor ("org.projectlombok:lombok:1.18.24")
+	//json
+	implementation 'org.json:json:20211205'
+	//jsoup
+	implementation 'org.jsoup:jsoup:1.13.1'
 }
 
 tasks.named('test') {
