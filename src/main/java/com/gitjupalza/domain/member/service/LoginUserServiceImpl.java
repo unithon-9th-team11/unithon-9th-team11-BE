@@ -2,6 +2,7 @@ package com.gitjupalza.domain.member.service;
 
 import com.gitjupalza.domain.member.exception.UserNotFoundException;
 import com.gitjupalza.domain.member.repository.UserRepository;
+import com.gitjupalza.global.member.service.LoginUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class LoginUserServiceImpl implements LoginUserService{
+public class LoginUserServiceImpl implements LoginUserService {
     private final UserRepository userRepository;
 
     @Override

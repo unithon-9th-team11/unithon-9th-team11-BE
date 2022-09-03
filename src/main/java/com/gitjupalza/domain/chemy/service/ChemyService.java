@@ -1,6 +1,6 @@
 package com.gitjupalza.domain.chemy.service;
 
-import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
+import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 
 public interface ChemyService {
     Long createChemy(String firstGithubId, String secondGithubId);

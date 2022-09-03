@@ -1,15 +1,15 @@
 package com.gitjupalza.domain.chemy.service;
 
-import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
+import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import com.gitjupalza.domain.chemy.data.event.CreateChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.DeleteChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.QueryChemyEvent;
 import com.gitjupalza.domain.chemy.exception.ChemyNotFoundException;
-import com.gitjupalza.domain.chemy.repository.ChemyRepository;
-import com.gitjupalza.domain.chemy.util.ChemyConverter;
+import com.gitjupalza.global.chemy.repository.ChemyRepository;
+import com.gitjupalza.global.chemy.util.ChemyConverter;
 import com.gitjupalza.domain.chemy.util.ChemyGenerator;
-import com.gitjupalza.domain.member.service.LoginUserService;
+import com.gitjupalza.global.member.service.LoginUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;

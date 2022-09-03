@@ -1,11 +1,12 @@
 package com.gitjupalza.domain.chemy.util;
 
-import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
+import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import com.gitjupalza.domain.chemy.data.event.CreateChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.DeleteChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.QueryChemyEvent;
 import com.gitjupalza.domain.chemy.data.response.QueryChemyResponse;
+import com.gitjupalza.global.chemy.util.ChemyConverter;
 import org.springframework.stereotype.Component;
 
 @Component

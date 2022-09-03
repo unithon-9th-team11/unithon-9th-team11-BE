@@ -1,12 +1,12 @@
 package com.gitjupalza.domain.chemy.controller;
 
-import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
+import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.request.CreateChemyRequest;
 import com.gitjupalza.domain.chemy.data.response.CreateChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.DeleteChemyResponse;
 import com.gitjupalza.domain.chemy.data.response.QueryChemyResponse;
 import com.gitjupalza.domain.chemy.service.ChemyService;
-import com.gitjupalza.domain.chemy.util.ChemyConverter;
+import com.gitjupalza.global.chemy.util.ChemyConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

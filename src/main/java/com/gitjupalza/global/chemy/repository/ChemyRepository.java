@@ -1,4 +1,4 @@
-package com.gitjupalza.domain.chemy.repository;
+package com.gitjupalza.global.chemy.repository;
 
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import org.springframework.data.jpa.repository.JpaRepository;

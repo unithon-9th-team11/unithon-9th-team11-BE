@@ -1,4 +1,4 @@
-package com.gitjupalza.domain.member.service;
+package com.gitjupalza.global.member.service;
 
 public interface LoginUserService {
     String getLoginUserId();
