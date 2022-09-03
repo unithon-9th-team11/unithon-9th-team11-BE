@@ -2,7 +2,6 @@ package com.gitjupalza.domain.chemy.util;
 
 import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 @Component
