@@ -42,7 +42,7 @@ public class ChemyConverterImpl implements ChemyConverter {
     }
 
     @Override
-    public QueryChemyEvent toQueryEvent(Long idx) {
-        return new QueryChemyEvent(idx);
+    public QueryChemyEvent toQueryEvent(Chemy entity) {
+        return new QueryChemyEvent(entity.getIdx(), entity.getFirstGithubId(), entity.getSecondGithubId(), entity.getChemyScore());
     }
 }

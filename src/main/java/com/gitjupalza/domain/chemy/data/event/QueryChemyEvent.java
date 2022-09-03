@@ -7,4 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class QueryChemyEvent {
     private final Long idx;
+    private final String firstGithubId;
+    private final String secondGithubId;
+    private final Integer chemyScore;
 }
