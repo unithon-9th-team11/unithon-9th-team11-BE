@@ -1,10 +1,10 @@
-package unithon0911.chemibackend;
+package com.gitjupalza;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChemiBackendApplicationTests {
+class GitjupalzaApplicationTests {
 
 	@Test
 	void contextLoads() {
