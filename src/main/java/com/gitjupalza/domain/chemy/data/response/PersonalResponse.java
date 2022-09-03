@@ -1,13 +1,16 @@
 package com.gitjupalza.domain.chemy.data.response;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class PersonalResponse {
-    private final String githubId;
-    private final Integer totalStar;
-    private final Integer totalCommit;
-    private final Integer totalOrganization;
+    private String githubId;
+    private Integer totalStar;
+    private Integer totalCommit;
+    private Integer totalOrganization;
 }

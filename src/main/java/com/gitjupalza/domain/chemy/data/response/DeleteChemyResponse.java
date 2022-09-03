@@ -1,10 +1,13 @@
 package com.gitjupalza.domain.chemy.data.response;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class DeleteChemyResponse {
-    private final Long deletedChemyIdx;
+    private Long deletedChemyIdx;
 }

@@ -1,12 +1,15 @@
 package com.gitjupalza.domain.chemy.data.response;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class QueryChemyResponse {
-    private final PersonalResponse firstPersonalData;
-    private final PersonalResponse secondPersonalData;
-    private final Integer chemyScore;
+    private PersonalResponse firstPersonalData;
+    private PersonalResponse secondPersonalData;
+    private Integer chemyScore;
 }
