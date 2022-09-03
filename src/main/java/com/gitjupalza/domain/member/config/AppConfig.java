@@ -1,4 +1,4 @@
-package com.gitjupalza.member.config;
+package com.gitjupalza.domain.member.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

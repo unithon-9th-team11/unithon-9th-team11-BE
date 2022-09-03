@@ -1,4 +1,4 @@
-package com.gitjupalza.member.config;
+package com.gitjupalza.domain.member.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

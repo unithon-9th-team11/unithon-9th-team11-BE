@@ -1,4 +1,4 @@
-package com.gitjupalza.member.response;
+package com.gitjupalza.domain.member.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

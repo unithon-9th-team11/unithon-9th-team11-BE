@@ -1,6 +1,6 @@
-package com.gitjupalza.member.repository;
+package com.gitjupalza.domain.member.repository;
 
-import com.gitjupalza.member.data.entity.Account;
+import com.gitjupalza.domain.member.data.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

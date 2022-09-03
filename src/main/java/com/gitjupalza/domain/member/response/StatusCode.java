@@ -1,4 +1,4 @@
-package com.gitjupalza.member.response;
+package com.gitjupalza.domain.member.response;
 
 public class StatusCode {
     public static final int OK = 200;

@@ -1,6 +1,6 @@
-package com.gitjupalza.member.config;
+package com.gitjupalza.domain.member.filter;
 
-import com.gitjupalza.member.service.CustomUserDetailsService;
+import com.gitjupalza.domain.member.service.CustomUserDetailsService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +34,7 @@ public class JwtTokenProvider {
         claims.put("roles", roles); // 권한 설정, key/ value 쌍으로 저장
         Date date = new Date();
         return Jwts.builder()
-                .setClaims(claims) // 발행 유저 정보 저장
+                .addClaims(claims) // 발행 유저 정보 저장
                 .setIssuedAt(date) // 발행 시간 저장
                 .setExpiration(new Date(date.getTime() + TOKEN_VALID_TIME)) // 토큰 유효 시간 저장
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY) // 해싱 알고리즘 및 키 설정

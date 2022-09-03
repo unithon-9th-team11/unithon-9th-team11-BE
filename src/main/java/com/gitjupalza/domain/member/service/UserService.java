@@ -1,10 +1,10 @@
-package com.gitjupalza.member.service;
+package com.gitjupalza.domain.member.service;
 
-import com.gitjupalza.member.config.JwtTokenProvider;
-import com.gitjupalza.member.data.dto.SignInDto;
-import com.gitjupalza.member.data.dto.SignUpDto;
-import com.gitjupalza.member.data.entity.Account;
-import com.gitjupalza.member.repository.UserRepository;
+import com.gitjupalza.domain.member.data.dto.SignInDto;
+import com.gitjupalza.domain.member.data.dto.SignUpDto;
+import com.gitjupalza.domain.member.repository.UserRepository;
+import com.gitjupalza.domain.member.filter.JwtTokenProvider;
+import com.gitjupalza.domain.member.data.entity.Account;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.gitjupalza.member.config;
+package com.gitjupalza.domain.member.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;

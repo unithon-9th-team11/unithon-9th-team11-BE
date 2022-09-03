@@ -1,4 +1,4 @@
-package com.gitjupalza.member.data.entity;
+package com.gitjupalza.domain.member.data.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

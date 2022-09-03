@@ -1,17 +1,13 @@
-package com.gitjupalza.member.controller;
+package com.gitjupalza.domain.member.controller;
 
-import com.gitjupalza.member.config.JwtTokenProvider;
-import com.gitjupalza.member.data.dto.SignInDto;
-import com.gitjupalza.member.data.dto.SignUpDto;
-import com.gitjupalza.member.data.entity.Account;
-import com.gitjupalza.member.repository.UserRepository;
-import com.gitjupalza.member.response.DefaultRes;
-import com.gitjupalza.member.response.StatusCode;
-import com.gitjupalza.member.service.UserService;
+import com.gitjupalza.domain.member.data.dto.SignInDto;
+import com.gitjupalza.domain.member.data.dto.SignUpDto;
+import com.gitjupalza.domain.member.repository.UserRepository;
+import com.gitjupalza.domain.member.filter.JwtTokenProvider;
+import com.gitjupalza.domain.member.response.DefaultRes;
+import com.gitjupalza.domain.member.response.StatusCode;
+import com.gitjupalza.domain.member.service.UserService;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Collections;
-import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

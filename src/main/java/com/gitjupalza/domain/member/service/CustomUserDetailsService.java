@@ -1,9 +1,9 @@
-package com.gitjupalza.member.service;
+package com.gitjupalza.domain.member.service;
 
 
-import com.gitjupalza.member.data.entity.Account;
-import com.gitjupalza.member.data.entity.CustomAccountDetails;
-import com.gitjupalza.member.repository.UserRepository;
+import com.gitjupalza.domain.member.repository.UserRepository;
+import com.gitjupalza.domain.member.data.entity.Account;
+import com.gitjupalza.domain.member.data.entity.CustomAccountDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
