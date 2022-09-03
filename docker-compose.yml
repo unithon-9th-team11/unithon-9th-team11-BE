@@ -23,6 +23,7 @@ services:
       MYSQL_USERNAME: root
       SPRING_PROFILE: ${SPRING_PROFILE}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
     build: .
     ports:
       - 8080:8080
