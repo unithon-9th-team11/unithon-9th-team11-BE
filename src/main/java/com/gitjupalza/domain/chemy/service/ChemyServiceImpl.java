@@ -4,6 +4,7 @@ import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import com.gitjupalza.domain.chemy.data.event.CreateChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.DeleteChemyEvent;
+import com.gitjupalza.domain.chemy.data.event.QueryChemyEvent;
 import com.gitjupalza.domain.chemy.exception.ChemyNotFoundException;
 import com.gitjupalza.domain.chemy.repository.ChemyRepository;
 import com.gitjupalza.domain.chemy.util.ChemyConverter;
@@ -39,6 +40,10 @@ public class ChemyServiceImpl implements ChemyService {
     public ChemyDto queryByIdx(Long idx) {
         final Chemy entity = chemyRepository.findById(idx)
                 .orElseThrow(() -> new ChemyNotFoundException(String.format("idx가 %d인 궁합정보를 찾을 수 없습니다! 궁합정보를 조회할 수 없습니다!", idx)));
+
+        QueryChemyEvent event = chemyConverter.toQueryEvent(entity.getIdx());
+        applicationEventPublisher.publishEvent(event);
+
         return chemyConverter.toDto(entity);
     }
 

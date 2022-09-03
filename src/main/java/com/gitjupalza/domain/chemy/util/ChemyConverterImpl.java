@@ -4,6 +4,7 @@ import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import com.gitjupalza.domain.chemy.data.event.CreateChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.DeleteChemyEvent;
+import com.gitjupalza.domain.chemy.data.event.QueryChemyEvent;
 import com.gitjupalza.domain.chemy.data.response.QueryChemyResponse;
 import org.springframework.stereotype.Component;
 
@@ -33,5 +34,10 @@ public class ChemyConverterImpl implements ChemyConverter {
     @Override
     public DeleteChemyEvent toDeleteEvent(Long idx) {
         return new DeleteChemyEvent(idx);
+    }
+
+    @Override
+    public QueryChemyEvent toQueryEvent(Long idx) {
+        return new QueryChemyEvent(idx);
     }
 }
