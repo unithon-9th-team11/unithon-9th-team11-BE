@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class RankingDto {
-    private final Long idx;
     private final Long viewerIdx;
     private final Long chemyIdx;
 }
