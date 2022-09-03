@@ -12,3 +12,6 @@ spring:
     username: ${MYSQL_USERNAME}
   profiles:
     active: ${SPRING_PROFILE}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
