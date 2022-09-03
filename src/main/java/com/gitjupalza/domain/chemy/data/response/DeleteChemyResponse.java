@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class CreateChemyResponse {
-    private final Long createdChemyIdx;
+public class DeleteChemyResponse {
+    private final Long deletedChemyIdx;
 }
