@@ -1,13 +1,10 @@
 package com.gitjupalza.domain.rank.data.response;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class QueryRankingResponse {
     private String firstGithubIdx;
     private String secondGithubIdx;
