@@ -18,5 +18,5 @@ public interface ChemyConverter {
 
     DeleteChemyEvent toDeleteEvent(Long idx);
 
-    QueryChemyEvent toQueryEvent(Long idx);
+    QueryChemyEvent toQueryEvent(Chemy entity);
 }

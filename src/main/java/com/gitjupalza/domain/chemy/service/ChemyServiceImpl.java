@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 @Service
 @RequiredArgsConstructor
 public class ChemyServiceImpl implements ChemyService {
@@ -26,7 +28,19 @@ public class ChemyServiceImpl implements ChemyService {
     @Override
     public Long createChemy(String firstGithubId, String secondGithubId) {
         final ChemyDto dto = chemyGenerator.generate(firstGithubId, secondGithubId);
-        final Chemy entity = chemyConverter.toEntity(dto);
+
+        final AtomicReference<Chemy> atomic = new AtomicReference<>();
+        chemyRepository.findByFirstGithubIdAndSecondGithubId(firstGithubId, secondGithubId)
+                .ifPresentOrElse(
+                        entity -> {
+                            entity.setChemyScore(dto.getChemyScore());
+                            atomic.set(entity);
+                        }, () -> {
+                            Chemy entity = chemyConverter.toEntity(dto);
+                            atomic.set(entity);
+                        });
+
+        final Chemy entity = atomic.get();
         final Chemy savedEntity = chemyRepository.save(entity);
 
         final Long issuerIdx = loginUserService.getLoginUserIdx();
@@ -41,7 +55,7 @@ public class ChemyServiceImpl implements ChemyService {
         final Chemy entity = chemyRepository.findById(idx)
                 .orElseThrow(() -> new ChemyNotFoundException(String.format("idx가 %d인 궁합정보를 찾을 수 없습니다! 궁합정보를 조회할 수 없습니다!", idx)));
 
-        QueryChemyEvent event = chemyConverter.toQueryEvent(entity.getIdx());
+        QueryChemyEvent event = chemyConverter.toQueryEvent(entity);
         applicationEventPublisher.publishEvent(event);
 
         return chemyConverter.toDto(entity);

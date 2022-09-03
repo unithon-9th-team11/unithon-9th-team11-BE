@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DetailedRankingDto {
     private final Long viewerIdx;
-    private final Long id;
+    private final Long chemyIdx;
     private final String firstGithubId;
     private final String secondGithubId;
     private final Integer chemyScore;
