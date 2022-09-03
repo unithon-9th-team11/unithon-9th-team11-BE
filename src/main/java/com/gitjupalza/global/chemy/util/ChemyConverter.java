@@ -1,6 +1,6 @@
-package com.gitjupalza.domain.chemy.util;
+package com.gitjupalza.global.chemy.util;
 
-import com.gitjupalza.domain.chemy.data.dto.ChemyDto;
+import com.gitjupalza.global.chemy.data.dto.ChemyDto;
 import com.gitjupalza.domain.chemy.data.entity.Chemy;
 import com.gitjupalza.domain.chemy.data.event.CreateChemyEvent;
 import com.gitjupalza.domain.chemy.data.event.DeleteChemyEvent;

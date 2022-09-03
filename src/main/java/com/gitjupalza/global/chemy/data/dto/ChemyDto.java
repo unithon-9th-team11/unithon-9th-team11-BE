@@ -1,4 +1,4 @@
-package com.gitjupalza.domain.chemy.data.dto;
+package com.gitjupalza.global.chemy.data.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
