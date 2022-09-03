@@ -1,82 +1,85 @@
 package com.gitjupalza.domain.chemy.util;
 
+import com.gitjupalza.domain.chemy.data.entity.PersonalGithubData;
+import com.gitjupalza.domain.chemy.repository.PersonalGithubDataRepository;
 import com.gitjupalza.domain.github.repository.GitHubUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.Collections;
 
 @Component
 @RequiredArgsConstructor
 public class ChemyScoreResolverImpl implements ChemyScoreResolver {
     private final GitHubUtil gitHubUtil;
+    private final PersonalGithubDataRepository personalGithubDataRepository;
 
     @Override
     public Integer resolve(String firstGithubId, String secondGithubId) throws IOException {
-        int num1 = getLetterCalc(firstGithubId, secondGithubId);
-        int num2 = getStarCalc(firstGithubId, secondGithubId);
-        int num3 = getCommitCalc(firstGithubId, secondGithubId);
-        int num4 = getOrgsCalc(firstGithubId, secondGithubId);
+        int num1;
+        char[] first = firstGithubId.toCharArray();
+        char[] second = secondGithubId.toCharArray();
+
+        if (firstGithubId.length() < 4 || secondGithubId.length() < 4) num1 = 250;
+
+        int firstNum1 = first[0] + first[1] + first[2] + first[3];
+        int secondNum1 = second[0] + second[1] + second[2] + second[3];
+        int gap = Math.abs(firstNum1 - secondNum1);
+
+        if (gap < 6) num1 = 200;
+        else if (gap < 8) num1 = 150;
+        else if (gap < 10) num1 = 100;
+        else num1 = 50;
+
+        /////////////////////////
+
+        int num2;
+        int firstNumStar = (gitHubUtil.getStarCnt(firstGithubId) % 5);
+        int secondNumStar = (gitHubUtil.getStarCnt(secondGithubId) % 5);
+        int gap2 = Math.abs(firstNumStar - secondNumStar);
+
+        if (gap2 ==  0) num2 = 250;
+        else if (gap2 == 1) num2 = 200;
+        else if (gap2 == 2) num2 = 150;
+        else if (gap2 == 3) num2 = 100;
+        else num2 = 50;
+
+
+
+        ///////////////
+        int num3;
+        int firstNumCommit = gitHubUtil.getTotalCommitCnt(firstGithubId);
+        int secondNumCommit = gitHubUtil.getTotalCommitCnt(secondGithubId);
+        int gap3 = Math.abs(firstNumCommit - secondNumCommit);
+
+        if (gap3 < 30) num3 =  250;
+        else if (gap3 < 80) num3 =  200;
+        else if (gap3 < 130) num3 = 150;
+        else if (gap3 < 160) num3 =  100;
+        else num3 = 50;
+
+
+        ///////////////
+        int num4;
+        int firstNumOrg = gitHubUtil.getOrgCnt(firstGithubId);
+        int secondNumOrg = gitHubUtil.getOrgCnt(secondGithubId);
+        int gap4 = Math.abs(firstNumOrg - secondNumOrg);
+
+        if (gap4 > 10) num4 = 250;
+        else if (gap4 > 8) num4 = 200;
+        else if (gap4 > 5) num4 = 150;
+        else if (gap4 > 3) num4 = 100;
+        else num4 = 50;
+
+        PersonalGithubData firstPersonalGithubData = new PersonalGithubData(firstGithubId, firstNumStar, firstNumCommit, firstNumOrg);
+        PersonalGithubData secondPersonalGithubData = new PersonalGithubData(secondGithubId, secondNumStar, secondNumCommit, secondNumOrg);
+
+        personalGithubDataRepository.save(firstPersonalGithubData);
+        personalGithubDataRepository.save(secondPersonalGithubData);
 
         return num1 + num2 + num3 + num4;
     }
 
-    // 이 항목이 제일 높으면 이름부터 찰떡궁합이에요
-    private Integer getLetterCalc(String firstGithubId, String secondGithubId) {
-        char fisrt[] = firstGithubId.toCharArray();
-        char second[] = secondGithubId.toCharArray();
-
-        if (firstGithubId.length() < 4 || secondGithubId.length() < 4) return 250;
-
-        int firstNum = fisrt[0] + fisrt[1] + fisrt[2] + fisrt[3];
-        int secondNum = second[0] + second[1] + second[2] + second[3];
-        int gap = Math.abs(firstNum - secondNum);
-
-        if (gap < 6) return 200;
-        else if (gap < 8) return 150;
-        else if (gap < 10) return 100;
-        else return 50;
-    }
-
-    // 이 항목이 높으면 시너지를 통해 서로 더 빛나게 해줄 수 있을 것 같아요 : 무작위 연산 후 값이 가까우면
-    private Integer getStarCalc(String firstGithubId, String secondGithubId) throws IOException {
-        int firstNum = (gitHubUtil.getStarCnt(firstGithubId) % 5);
-        int secondNum = (gitHubUtil.getStarCnt(secondGithubId) % 5);
-        int gap = Math.abs(firstNum - secondNum);
-
-        if (gap ==  0) return 250;
-        else if (gap == 1) return 200;
-        else if (gap == 2) return 150;
-        else if (gap == 3) return 100;
-        else return 50;
-    }
-
-    // 이 항목이 제일 높으면 서로 좋은 러닝메이트가 될 수도 있을 것 같아요 : 숫자에 대한 크기
-    private Integer getCommitCalc(String firstGithubId, String secondGithubId) throws IOException {
-        int firstNum = gitHubUtil.getTotalCommitCnt(firstGithubId);
-        int secondNum = gitHubUtil.getTotalCommitCnt(secondGithubId);
-        int gap = Math.abs(firstNum - secondNum);
-
-        if (gap < 30) return 250;
-        else if (gap < 80) return 200;
-        else if (gap < 130) return 150;
-        else if (gap < 160) return 100;
-        else return 50;
-    }
-
-    // 이 항목이 제일 높으면 서로 보완해주는 친구가 될 것 같아요 : 차이가 클 수록
-    private Integer getOrgsCalc(String firstGithubId, String secondGithubId) throws IOException {
-        int firstNum = gitHubUtil.getOrgCnt(firstGithubId);
-        int secondNum = gitHubUtil.getOrgCnt(secondGithubId);
-        int gap = Math.abs(firstNum - secondNum);
-
-        if (gap > 10) return 250;
-        else if (gap > 8) return 200;
-        else if (gap > 5) return 150;
-        else if (gap > 3) return 100;
-        else return 50;
-    }
 }
 
 
