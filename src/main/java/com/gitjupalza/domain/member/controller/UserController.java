@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin("*")
 @RequestMapping("/api/v1/account")
 public class UserController {
     private final PasswordEncoder passwordEncoder;
@@ -40,11 +41,11 @@ public class UserController {
     }
 
     // 로그인
-    @PostMapping("/api/v1/account/id/{id}/exists")
+    @GetMapping("/id/{id}/exists")
     public ResponseEntity login(@PathVariable("id") String id) {
         boolean isPossible = userService.checkIsPossible(id);
 
-        return new ResponseEntity(DefaultRes.res(StatusCode.OK, "사용 ", isPossible), HttpStatus.OK);
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, "사용 ", !isPossible), HttpStatus.OK);
     }
 
     // JWT 인증 요청 테스트

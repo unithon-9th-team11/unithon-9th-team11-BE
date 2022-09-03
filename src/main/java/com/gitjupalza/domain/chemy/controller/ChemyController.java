@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/chemy")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ChemyController {
     private final ChemyService chemyService;
     private final ChemyConverter chemyConverter;

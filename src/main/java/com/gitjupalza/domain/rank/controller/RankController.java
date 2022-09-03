@@ -9,10 +9,7 @@ import com.gitjupalza.global.member.service.LoginUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/rank")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class RankController {
     private final RankingService rankingService;
     private final RankConverter rankConverter;

@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/account/register", "/api/v1/account/login").permitAll()
+                .antMatchers("/api/v1/account/register", "/api/v1/account/login", "/api/v1/account/id/**/exists").permitAll()
                 .antMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/webjars/**", "/swagger-resources/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
