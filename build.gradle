@@ -31,7 +31,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	//mysql
-	runtimeOnly("mysql:mysql-connector-java")
+	//runtimeOnly("mysql:mysql-connector-java")
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
 	//jwt
 	implementation ("io.jsonwebtoken:jjwt:0.9.1")
 	//swagger
@@ -42,6 +43,9 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 	testImplementation ("org.mockito:mockito-inline:4.7.0")
+	//lombok
+	compileOnly ("org.projectlombok:lombok:1.18.24")
+	annotationProcessor ("org.projectlombok:lombok:1.18.24")
 }
 
 tasks.named('test') {
