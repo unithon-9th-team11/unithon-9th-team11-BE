@@ -42,6 +42,9 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 	testImplementation ("org.mockito:mockito-inline:4.7.0")
+	//lombok
+	compileOnly ("org.projectlombok:lombok:1.18.24")
+	annotationProcessor ("org.projectlombok:lombok:1.18.24")
 }
 
 tasks.named('test') {
