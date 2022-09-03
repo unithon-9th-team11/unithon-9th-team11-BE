@@ -14,11 +14,11 @@ public class ChemyConverterImpl implements ChemyConverter {
 
     @Override
     public Chemy toEntity(ChemyDto dto) {
-        return null;
+        return new Chemy(0L, dto.getFirstGithubId(), dto.getSecondGithubId(), dto.getChemyScore());
     }
 
     @Override
     public ChemyDto toDto(Chemy entity) {
-        return null;
+        return new ChemyDto(entity.getIdx(), entity.getFirstGithubId(), entity.getSecondGithubId(), entity.getChemyScore());
     }
 }
