@@ -7,7 +7,9 @@ import com.gitjupalza.domain.chemy.repository.ChemyRepository;
 import com.gitjupalza.domain.chemy.util.ChemyConverter;
 import com.gitjupalza.domain.chemy.util.ChemyGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class ChemyServiceImpl implements ChemyService {
     private final ChemyRepository chemyRepository;
