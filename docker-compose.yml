@@ -18,7 +18,7 @@ services:
     environment:
       REDIS_URL: redis
       REDIS_PORT: 6379
-      MYSQL_URL: jdbc:mysql://mysql:3306/gitjupalza?useSSL=false&serverTimezone=UTC
+      MYSQL_URL: jdbc:mysql://mysql:3306/gitjupalza
       MYSQL_PASSWORD: root
       MYSQL_USERNAME: root
       SPRING_PROFILE: ${SPRING_PROFILE}

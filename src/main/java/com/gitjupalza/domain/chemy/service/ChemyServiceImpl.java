@@ -42,10 +42,9 @@ public class ChemyServiceImpl implements ChemyService {
 
         final Chemy entity = atomic.get();
         final Chemy savedEntity = chemyRepository.save(entity);
-
-        Long issuerIdx = -1L;
+;
         try {
-            issuerIdx = loginUserService.getLoginUserIdx();
+            Long issuerIdx = loginUserService.getLoginUserIdx();
             final CreateChemyEvent event = chemyConverter.toCreateEvent(savedEntity, issuerIdx);
             applicationEventPublisher.publishEvent(event);
         } catch (Exception ignored) {}
